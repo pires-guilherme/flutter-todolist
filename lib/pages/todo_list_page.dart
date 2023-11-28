@@ -57,7 +57,7 @@ class _TodoListPageState extends State<TodoListPage> {
                       shrinkWrap: true,
                       children: [
                         for(Task task in tasks)
-                            taskListItem(tarefa:task),
+                            taskListItem(tarefa:task, excluir: excluir),
                       ],
                     ),
                   ),
@@ -84,6 +84,7 @@ class _TodoListPageState extends State<TodoListPage> {
   }
 
   void add(){
+    print("add aqui");
     String text = nomeTarefaController.text;
 
     Task tarefa = Task(
@@ -101,6 +102,12 @@ class _TodoListPageState extends State<TodoListPage> {
   void clear(){
     setState(() {
       tasks.clear();
+    });
+  }
+
+  void excluir(Task tarefa){
+    setState(() {
+      tasks.remove(tarefa);
     });
   }
 }
